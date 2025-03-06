@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../models/tweet_model.dart';
-import '../data/tweet_data.dart'; // Impor data dummy
+import '../data/tweet_data.dart';
 
 class TweetController extends GetxController {
   var tweets = <Tweet>[].obs;
@@ -8,11 +8,11 @@ class TweetController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    tweets.addAll(
-        dummyTweets); // ✅ Tambahkan data dummy saat controller diinisialisasi
+    tweets.addAll(dummyTweets);
   }
 
- void addTweet(String username, String content, String profileImage, String category) {
+  void addTweet(
+      String username, String content, String profileImage, String category) {
     tweets.insert(
       0,
       Tweet(
@@ -24,24 +24,23 @@ class TweetController extends GetxController {
         likes: 0,
         retweets: 0,
         comments: 0,
+        impressions: 0,
         contentImage: '',
-        category: "Untuk Anda", // ✅ Simpan kategori tweet
+        category: "Untuk Anda",
       ),
     );
   }
 
-  // ✅ Toggle Like
   void toggleLike(int index) {
     final updatedTweet = tweets[index].copyWith(
-      likes: tweets[index].likes + 1, // Tambah 1 like
+      likes: tweets[index].likes + 1,
     );
-    tweets[index] = updatedTweet; // Update daftar tweet
+    tweets[index] = updatedTweet;
   }
 
-  // ✅ Toggle Retweet
   void toggleRetweet(int index) {
     final updatedTweet = tweets[index].copyWith(
-      retweets: tweets[index].retweets + 1, // Tambah 1 retweet
+      retweets: tweets[index].retweets + 1,
     );
     tweets[index] = updatedTweet;
   }

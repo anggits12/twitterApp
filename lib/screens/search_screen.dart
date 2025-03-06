@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../controllers/search_controller.dart';
 import '../widgets/sidebar_widget.dart';
 
-class SearchPage extends StatelessWidget {
+class SearchScreen extends StatelessWidget {
   final TrendSearchController controller = Get.put(TrendSearchController());
 
   @override
@@ -39,7 +39,7 @@ class SearchPage extends StatelessWidget {
               Scaffold.of(context).openDrawer();
             },
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: CircleAvatar(
                 backgroundImage: AssetImage("assets/akuntwt.jpg"),
                 radius: 16,
@@ -62,13 +62,11 @@ class SearchPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    mainAxisAlignment:
-                        MainAxisAlignment.spaceBetween, // ✅ Biar ikon di kanan
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment
-                              .start, // ✅ Teks tetap rapi di kiri
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               trend.category.toUpperCase(),
@@ -93,11 +91,10 @@ class SearchPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Icon(Icons.more_vert,
-                          color: Colors.grey), // ✅ Ikon tetap di ujung kanan
+                      Icon(Icons.more_vert, color: Colors.grey),
                     ],
                   ),
-                  Divider(color: Colors.grey[800]),
+                  Divider(color: Colors.transparent),
                 ],
               ),
             );

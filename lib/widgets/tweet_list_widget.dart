@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../controllers/tweet_controller.dart';
 
 class TweetListWidget extends StatelessWidget {
-  final String category; // Tambahkan parameter category
+  final String category;
   final TweetController tweetController = Get.find();
 
   TweetListWidget({Key? key, required this.category}) : super(key: key);
@@ -11,9 +12,8 @@ class TweetListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      // Filter tweet berdasarkan kategori
       final tweets = tweetController.tweets
-          .where((tweet) => tweet.category == category) // Sesuaikan dengan kategori
+          .where((tweet) => tweet.category == category)
           .toList();
 
       if (tweets.isEmpty) {
@@ -39,19 +39,15 @@ class TweetListWidget extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // **Avatar Profil**
                   CircleAvatar(
                     backgroundImage: AssetImage(tweet.profileImage),
                     radius: 24,
                   ),
                   SizedBox(width: 10),
-
-                  // **Tweet Content (Nama, Handle, Isi, Gambar, Footer)**
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // **Header: Nama & Handle**
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -71,14 +67,9 @@ class TweetListWidget extends StatelessWidget {
                             Icon(Icons.more_vert, color: Colors.grey),
                           ],
                         ),
-
                         SizedBox(height: 5),
-
-                        // **Isi Tweet**
                         Text(tweet.content,
                             style: TextStyle(color: Colors.white)),
-
-                        // **Gambar Tweet (Jika Ada)**
                         if (tweet.contentImage.isNotEmpty) ...[
                           SizedBox(height: 8),
                           ClipRRect(
@@ -87,62 +78,61 @@ class TweetListWidget extends StatelessWidget {
                                 fit: BoxFit.cover),
                           ),
                         ],
-
                         SizedBox(height: 8),
-
-                        // **Footer Tweet (Aksi)**
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            // Comments
                             Row(
                               children: [
-                                Icon(Icons.comment,
-                                    color: Colors.grey, size: 20),
+                                SvgPicture.asset("assets/comment.svg",
+                                    width: 20, color: Colors.grey),
                                 SizedBox(width: 5),
                                 Text(tweet.comments.toString(),
                                     style: TextStyle(color: Colors.grey)),
                               ],
                             ),
-
-                            // Retweets
                             Row(
                               children: [
                                 GestureDetector(
                                   onTap: () =>
                                       tweetController.toggleRetweet(index),
-                                  child: Icon(Icons.repeat,
+                                  child: SvgPicture.asset("assets/repeat.svg",
+                                      width: 20,
                                       color: tweet.isRetweeted
                                           ? Colors.green
-                                          : Colors.grey,
-                                      size: 20),
+                                          : Colors.grey),
                                 ),
                                 SizedBox(width: 5),
                                 Text(tweet.retweets.toString(),
                                     style: TextStyle(color: Colors.grey)),
                               ],
                             ),
-
-                            // Likes
                             Row(
                               children: [
                                 GestureDetector(
                                   onTap: () =>
                                       tweetController.toggleLike(index),
-                                  child: Icon(Icons.favorite,
+                                  child: SvgPicture.asset("assets/like.svg",
+                                      width: 20,
                                       color: tweet.isLiked
                                           ? Colors.red
-                                          : Colors.grey,
-                                      size: 20),
+                                          : Colors.grey),
                                 ),
                                 SizedBox(width: 5),
                                 Text(tweet.likes.toString(),
                                     style: TextStyle(color: Colors.grey)),
                               ],
                             ),
-
-                            Icon(Icons.bookmark_border,
-                                color: Colors.grey), // 🔖 **Ikon Bookmark**
+                            Row(
+                              children: [
+                                SvgPicture.asset("assets/impressions.svg",
+                                    width: 20, color: Colors.grey),
+                                SizedBox(width: 5),
+                                Text(tweet.impressions.toString(),
+                                    style: TextStyle(color: Colors.grey)),
+                              ],
+                            ),
+                            Icon(Icons.bookmark_border, color: Colors.grey),
                             Icon(Icons.share, color: Colors.grey),
                           ],
                         ),

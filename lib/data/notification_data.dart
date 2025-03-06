@@ -1,0 +1,76 @@
+import '../models/notification_model.dart';
+
+final List<NotificationModel> dummyNotifications = [
+  NotificationModel(
+    type: 'new_post',
+    title: 'ZEROBASEONE',
+    message: 'Notifikasi postingan baru untuk',
+    time: '2m',
+  ),
+  NotificationModel(
+    type: 'menfess',
+    title: 'Yupienfess',
+    message: 'Postingan terbaru dari',
+    subtitle: '(SEMUA BISA KIRIM MENFESS CEK BIO)',
+    username: 'upnjog',
+    time: '04 Mar 25',
+    description: 'Menindaklanjuti atas kegaduhan yang sudah ...',
+  ),
+  NotificationModel(
+    type: 'reply',
+    username: 'Nadia',
+    handle: '@nadiaa_xx',
+    time: '17 Jan 24',
+    message: 'Membalas',
+    mentions: [
+      '@lilycutie',
+      '@nanaaa',
+      '@JHJHJJ',
+      '@eunha_luv',
+      '@starrynight'
+    ],
+    reply: 'Setuju banget sih, ini keren!',
+  ),
+  NotificationModel(
+    type: 'reply',
+    username: 'Bela',
+    handle: '@belacoffee',
+    time: '04 Feb 24',
+    message: 'Coba cek ini deh',
+    mentions: ['@JHJHJJ', '@itsme_maya', '@sofiandco', '@milkywayy'],
+    reply: 'Menarik juga, bisa dicoba!',
+  ),
+  NotificationModel(
+    type: 'new_post',
+    title: 'Girls Squad✨',
+    message: 'Lihat postingan terbaru dari',
+    time: '10m',
+  ),
+  NotificationModel(
+    type: 'menfess',
+    title: 'TwtBestie',
+    message: 'Update terbaru dari',
+    subtitle: '(DM untuk ikut thread bestie!)',
+    username: 'bestiecircle',
+    time: '06 Mar 25',
+    description: 'Ada yang kangen masa-masa SMP gak sih? 🥺',
+  ),
+  NotificationModel(
+    type: 'reply',
+    username: 'Rina',
+    handle: '@rinapop',
+    time: '07 Feb 24',
+    message: 'Membalas',
+    mentions: ['@mellycute', '@JHJHJJ', '@bbychoco', '@feli.fel'],
+    reply: 'Fix ini harus dicoba!',
+  ),
+  NotificationModel(
+    type: 'reply',
+    username: 'Sarah',
+    handle: '@saraaahh',
+    time: '12 Feb 24',
+    message: 'Liat ini dong!',
+    mentions: ['@strawberrymilk', '@JHJHJJ', '@sunflowergirl'],
+    reply: 'Kayaknya seru banget deh!',
+  ),
+];

@@ -4,7 +4,7 @@ import '../controllers/navbar_controller.dart';
 import '../widgets/bottom_navbar_widget.dart';
 import '../widgets/sidebar_widget.dart';
 import 'create_screen.dart';
-import 'dm_screen.dart';
+import '../screens/dm_screen.dart';
 import 'home_screen.dart';
 import 'notification_screen.dart';
 import 'search_screen.dart';
@@ -14,9 +14,9 @@ class MainScreen extends StatelessWidget {
 
   final List<Widget> pages = [
     HomeScreen(),
-    SearchPage(),
-    NotificationsPage(),
-    DMPage(),
+    SearchScreen(),
+    NotificationScreen(),
+    DMScreen(),
   ];
 
   @override
@@ -24,17 +24,17 @@ class MainScreen extends StatelessWidget {
     return Obx(
       () => Scaffold(
         backgroundColor: Colors.black,
-        drawer: ProfileDrawer(), // ⬅️ Pastikan drawer ada di sini
+        drawer: ProfileDrawer(),
         body: pages[navController.selectedIndex.value],
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.to(
-                () => CreateTweetScreen()); // 🔥 Navigasi ke halaman CreateTweet
-          },
-          backgroundColor: Color.fromARGB(255, 53, 161, 255),
-          child: Icon(Icons.add, color: Colors.white),
-        ),
-
+        floatingActionButton: (navController.selectedIndex.value != 3)
+            ? FloatingActionButton(
+                onPressed: () {
+                  Get.to(() => CreateTweetScreen());
+                },
+                backgroundColor: Color.fromARGB(255, 53, 161, 255),
+                child: Icon(Icons.add, color: Colors.white),
+              )
+            : null,
         bottomNavigationBar: BottomNavbarWidget(),
       ),
     );

@@ -6,6 +6,7 @@ class Tweet {
   final int comments;
   final int retweets;
   final int likes;
+  final int impressions;
   final String profileImage;
   final String contentImage;
   bool isRetweeted;
@@ -20,6 +21,7 @@ class Tweet {
     required this.comments,
     required this.retweets,
     required this.likes,
+    required this.impressions,
     required this.profileImage,
     required this.contentImage,
     this.isRetweeted = false,
@@ -27,7 +29,6 @@ class Tweet {
     required this.category,
   });
 
-  // ✅ Perbaikan copyWith
   Tweet copyWith({
     String? username,
     String? handle,
@@ -36,7 +37,8 @@ class Tweet {
     int? comments,
     int? retweets,
     int? likes,
-    String? profileImage, // <-- Sesuai dengan atribut aslinya
+    int? impressions,
+    String? profileImage,
     String? contentImage,
     String? category,
   }) {
@@ -48,9 +50,10 @@ class Tweet {
       comments: comments ?? this.comments,
       retweets: retweets ?? this.retweets,
       likes: likes ?? this.likes,
+      impressions: impressions ?? this.impressions,
       profileImage: profileImage ?? this.profileImage,
       contentImage: contentImage ?? this.contentImage,
-      category: category ?? this.category, 
+      category: category ?? this.category,
     );
   }
 }

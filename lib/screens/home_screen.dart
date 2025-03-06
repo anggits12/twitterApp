@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../widgets/tweet_list_widget.dart';
-import '../widgets/sidebar_widget.dart'; // ✅ Pastikan sidebar_widget.dart ada
+import '../widgets/sidebar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -9,9 +10,12 @@ class HomeScreen extends StatelessWidget {
       length: 2,
       child: Scaffold(
         backgroundColor: Colors.black,
-        drawer: ProfileDrawer(), // ✅ Tambahkan drawer untuk sidebar
+        drawer: ProfileDrawer(),
         appBar: AppBar(
-          title: Text('X', style: TextStyle(color: Colors.white)),
+          title: SvgPicture.asset(
+            'assets/xlogo.svg',
+            height: 50,
+          ),
           centerTitle: true,
           backgroundColor: Colors.black,
           leading: Builder(
@@ -21,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                 radius: 16,
               ),
               onPressed: () {
-                Scaffold.of(context).openDrawer(); // ✅ Pastikan sidebar bisa dibuka
+                Scaffold.of(context).openDrawer();
               },
             ),
           ),
@@ -33,11 +37,11 @@ class HomeScreen extends StatelessWidget {
             child: TabBar(
               labelColor: Colors.white,
               unselectedLabelColor: Colors.grey,
-              indicatorSize: TabBarIndicatorSize.tab, // ✅ Garis selebar tab
+              indicatorSize: TabBarIndicatorSize.tab,
               indicator: BoxDecoration(
                 border: Border(
                   bottom: BorderSide(
-                    color: Color.fromARGB(255, 53, 161, 255), // ✅ Warna biru aktif
+                    color: Color.fromARGB(255, 53, 161, 255),
                     width: 3,
                   ),
                 ),
