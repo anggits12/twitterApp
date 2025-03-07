@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/notification_controller.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../widgets/sidebar_widget.dart';
 
 class NotificationScreen extends GetView<NotificationController> {
   NotificationScreen({Key? key}) : super(key: key) {
@@ -14,6 +15,7 @@ class NotificationScreen extends GetView<NotificationController> {
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.black,
+        drawer: ProfileDrawer(),
         appBar: _buildAppBar(),
         body: Column(
           children: [
@@ -22,11 +24,6 @@ class NotificationScreen extends GetView<NotificationController> {
               child: Obx(() => _buildNotificationList()),
             ),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: Colors.blue,
-          child: Icon(Icons.add, size: 24),
         ),
       ),
     );

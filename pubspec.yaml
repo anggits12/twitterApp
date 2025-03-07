@@ -21,7 +21,12 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/
+    - assets/akuntwt.jpg
+    - assets/konten.jpg
+    - assets/konten2.jpeg
+    - assets/konten3.jpg
+    - assets/profil.jpg
+    - assets/profil2.jpg
     - assets/comment.svg
     - assets/repeat.svg
     - assets/like.svg
